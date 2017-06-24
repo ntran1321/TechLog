@@ -67,6 +67,7 @@ var buildTechTable = function(techs){
 			console.log("delete button clicked");
 			var techId = $(this).attr('value');
 			deleteTechnology(techId);
+			load();
 		});
 		
 		$('#content').append(table);
@@ -148,6 +149,7 @@ var buildTopicsTable = function(topics){
 		
 		deleteTopicBtn.click(function(e) {
 			deleteTopic(t.id);
+			load();
 		});
 	});
 
