@@ -1,0 +1,59 @@
+package data;
+
+import java.util.List;
+import java.util.Set;
+
+import entities.Technology;
+import entities.Topic;
+
+public class TechLogDAOImpl implements TechLogDAO{
+
+	@Override
+	public List<Technology> index() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Technology show(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Technology create(Technology technology) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Technology update(int id, Technology technology) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Set<Topic> showTopics(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Topic createTopic(int id, Topic topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroyTopic(int id, Topic topic) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

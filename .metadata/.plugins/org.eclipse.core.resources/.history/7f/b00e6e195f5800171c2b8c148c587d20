@@ -1,0 +1,24 @@
+$(document).ready(function(){
+	console.log("ready");
+	load();
+});
+
+var load = function() {
+	$.ajax({
+		type : 'GET',
+		url : 'api/technologies',
+		dataType : 'JSON'
+	})
+	.done(function(data,status){
+		console.log(data);
+		showTechnologies(data);
+	})
+	.fail(function(xhr,status,error){
+		console.log("Load function is broken!");
+		console.log(xhr.status);
+	})
+};
+
+var showTechnologies = function(techs){
+	buildTechTable(techs);
+}

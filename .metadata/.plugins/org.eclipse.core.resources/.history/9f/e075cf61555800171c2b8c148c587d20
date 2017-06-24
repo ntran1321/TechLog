@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" type="text/css" href="master.css">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Tech Log</title>
+  </head>
+  <body>
+  
+	<div id='header'></div>
+    <div id='content'></div>
+    <div id='createButton'></div>
+    
+    <script src="app.js"></script>
+  </body>
+</html>

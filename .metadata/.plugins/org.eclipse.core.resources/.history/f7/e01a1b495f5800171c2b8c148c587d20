@@ -1,0 +1,68 @@
+var buildTechTable = function(techs){
+	var table = $('<table>');
+	var th1 = $('<th>');
+	th1.text("Technology");
+	var th2 = $('<th>');
+	th2.text("Description");
+	var th3 = $('<th>');
+	th3.text("Comprehension");
+	var th4 = $('<th>');
+	th4.text("View");
+	
+	table.append(th1);
+	table.append(th2);
+	table.append(th3);
+	table.append(th4);
+	
+	techs.forEach(function(t,idx,array){
+		var tr = $('<tr>');
+		var td1 = $('<td>');
+		var td2 = $('<td>');
+		var td3 = $('<td>');
+		var td4 = $('<td>');
+
+		td1.text(t.name);
+		td1.attr('id', t.id);
+		tr.append(td1);
+		table.append(tr);
+		
+		td2.text(t.description);
+		td2.attr('id', t.id);
+		tr.append(td2);
+		table.append(tr);
+		
+		td3.text(t.totalScore);
+		td3.attr('id', t.id);
+		tr.append(td3);
+		table.append(tr);
+		
+		var viewBtn = $('<button>');
+		viewBtn.text('VIEW');
+		viewBtn.attr('id', 'view');
+		viewBtn.attr('value', t.id);
+		td4.append(viewBtn);
+		tr.append(td4);
+		table.append(tr);
+		
+		viewBtn.click(function(e) {
+			console.log("view button clicked");
+			var techId = $(this).attr('value');
+			loadSingleTechnology(techId);
+		});
+		
+		$('#content').append(table);
+	});
+};
+
+var displaySingleTechnology = function(tech){
+	var header = $('<h2>');
+	header.text(tech.name);
+	var h3 = $('<h3>');
+	h3.text(tech.topics);
+};
+
+
+
+
+
+

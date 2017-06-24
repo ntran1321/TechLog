@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;RESTTechLog/WebContent/WEB-INF/TechLog-Servlet.xml&apos; to &apos;TechLog-servlet.xml&apos;" description="Rename resource &apos;TechLog-Servlet.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/WEB-INF/TechLog-Servlet.xml" name="TechLog-servlet.xml" stamp="1498246941403" updateReferences="true"/>
+</session>

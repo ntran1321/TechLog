@@ -1,0 +1,67 @@
+package controllers;
+
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import data.TechLogDAO;
+import entities.Technology;
+import entities.Topic;
+
+@RestController
+public class TechLogController {
+
+	@Autowired
+	private TechLogDAO techLogDao;
+	
+	@RequestMapping(path = "ping", method = RequestMethod.GET)
+	public String ping() {
+		return "pong";
+	}
+	
+	@RequestMapping(path = "technologies", method = RequestMethod.GET)
+	public List<Technology> index(){
+		return techLogDao.index();
+	}
+	
+	@RequestMapping(path = "technologies/{id}", method = RequestMethod.GET)
+	public Technology show(@PathVariable int id){
+		return techLogDao.show(id);
+	}
+	
+	@RequestMapping(path = "technologies", method = RequestMethod.POST)
+	public Technology create(@RequestBody Technology technology){
+		return techLogDao.create(technology);
+	}
+	
+	@RequestMapping(path = "technologies/{id}", method = RequestMethod.DELETE)
+	public boolean destroy(@PathVariable int id){
+		return techLogDao.destroy(id);
+	}
+	
+	@RequestMapping(path = "topics", method = RequestMethod.GET)
+	public List<Topic> indexTopics(){
+		return techLogDao.indexTopics();
+	}
+	
+	@RequestMapping(path = "topics", method = RequestMethod.GET)
+	public Set<Topic> indexTopic(@PathVariable int id){
+		return techLogDao.showTopics(id);
+	}
+	
+	@RequestMapping(path = "topics/{id}", method = RequestMethod.POST)
+	public Topic createTopic(@PathVariable int id, @RequestBody Topic t){
+		return techLogDao.createTopic(id,t);
+	}
+	
+	@RequestMapping(path = "topics/{id}", method = RequestMethod.DELETE)
+	public boolean deleteTopic(@PathVariable int id, @RequestBody Topic t){
+		return techLogDao.destroyTopic(id,t);
+	}
+}
