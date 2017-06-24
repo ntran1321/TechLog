@@ -32,7 +32,8 @@ var loadSingleTechnology = function(id){
 	})
 	.done(function(data,status){
 		console.log(data);
-		displaySingleTechnology(data);
+		$('#content').empty();
+		loadTechnologyTopics(id);
 	})
 	.fail(function(xhr,status,error){
 		console.log("Load single tech is broken!");
@@ -95,7 +96,8 @@ var createTopic = function(newObj, techId){
 		contentType : 'application/json'
 	})
 	.done(function(data,status){
-		buildTopicsTable(data);
+		loadSingleTechnology(techId);
+		loadTechnologyTopics(techId);
 	})
 	.fail(function(xhr,status,error){
 		console.log("Create tech is broken!");

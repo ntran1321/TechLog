@@ -61,6 +61,7 @@ var buildTechTable = function(techs){
 			var techId = $(this).attr('value');
 			loadSingleTechnology(techId);
 			loadTechnologyTopics(techId);
+			$('#content').empty();
 		});
 		
 		deleteBtn.click(function(e) {
@@ -74,33 +75,34 @@ var buildTechTable = function(techs){
 	});
 };
 
-var displaySingleTechnology = function(tech){
-	var header = $('<h2>');
-	header.text(tech.name);
-	var h3 = $('<h3>');
-	h3.text(tech.topics);
-	$('#content').append(header);
-	$('#content').append(h3);
-	
-	var homeBtn = $('<button>');
-	homeBtn.text('Home');
-	$('#content').append(homeBtn);
-	
-	var addTopicBtn = $('<button>');
-	addTopicBtn.text('Add Topic');
-	$('#content').append(addTopicBtn);
-	
-	homeBtn.click(function(e) {
-		load();
-	});
-	
-	addTopicBtn.click(function(e) {
-		console.log(tech.id);
-		buildTopicForm(tech.id);
-	});
-};
+//var displaySingleTechnology = function(tech){
+//	var header = $('<h2>');
+//	header.text(tech.name);
+//	var h3 = $('<h3>');
+//	h3.text(tech.topics);
+//	$('#content').append(header);
+//	$('#content').append(h3);
+//	
+//	var homeBtn = $('<button>');
+//	homeBtn.text('Home');
+//	$('#content').append(homeBtn);
+//	
+//	var addTopicBtn = $('<button>');
+//	addTopicBtn.text('Add Topic');
+//	$('#content').append(addTopicBtn);
+//	
+//	homeBtn.click(function(e) {
+//		load();
+//	});
+//	
+//	addTopicBtn.click(function(e) {
+//		console.log(tech.id);
+//		buildTopicForm(tech.id);
+//	});
+//};
 
 var buildTopicsTable = function(topics){
+	$('#content').empty();
 	var table = $('<table>');
 	var th1 = $('<th>');
 	th1.text("Topic");
@@ -153,7 +155,6 @@ var buildTopicsTable = function(topics){
 		});
 	});
 
-	$('#content').append(header);
 	$('#content').append(table);
 	
 	var homeBtn = $('<button>');
@@ -162,6 +163,7 @@ var buildTopicsTable = function(topics){
 	
 	homeBtn.click(function(e) {
 		load();
+		$('#content').empty();
 	});
 };
 
