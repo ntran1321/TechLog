@@ -73,6 +73,21 @@ var loadTechnologyTopics = function(techId){
 	})
 };
 
+var updateTechnology = function(updatedTech, techId) {
+	$.ajax({
+		type : 'PUT',
+		url : 'api/technologies/' + techId,
+		dataType : 'JSON',
+		contentType : 'application/json',
+		data : JSON.stringify(updatedTech)
+	}).done(function(data, status) {
+		load(data);
+	}).fail(function(xhr, status, error) {
+		console.log("Everything is broken!")
+		console.log(xhr.status);
+	});
+};
+
 var deleteTechnology = function(techId){
 	$.ajax({
 		type: 'DELETE',

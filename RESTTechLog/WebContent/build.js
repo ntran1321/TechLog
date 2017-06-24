@@ -10,12 +10,15 @@ var buildTechTable = function(techs){
 	th4.text("View");
 	var th5 = $('<th>');
 	th5.text("Delete");
+	var th6 = $('<th>');
+	th6.text("Update");
 	
 	table.append(th1);
 	table.append(th2);
 	table.append(th3);
 	table.append(th4);
 	table.append(th5);
+	table.append(th6);
 	
 	techs.forEach(function(t,idx,array){
 		var tr = $('<tr>');
@@ -24,6 +27,7 @@ var buildTechTable = function(techs){
 		var td3 = $('<td>');
 		var td4 = $('<td>');
 		var td5 = $('<td>');
+		var td6 = $('<td>');
 
 		td1.text(t.name);
 		td1.attr('id', t.id);
@@ -56,6 +60,13 @@ var buildTechTable = function(techs){
 		tr.append(td5);
 		table.append(tr);
 		
+		var updateBtn = $('<button>');
+		updateBtn.text('UPDATE');
+		updateBtn.attr('value', t.id);
+		td6.append(updateBtn);
+		tr.append(td6);
+		table.append(tr);
+		
 		viewBtn.click(function(e) {
 			console.log("view button clicked");
 			var techId = $(this).attr('value');
@@ -69,6 +80,11 @@ var buildTechTable = function(techs){
 			var techId = $(this).attr('value');
 			deleteTechnology(techId);
 			load();
+		});
+		
+		updateBtn.click(function(e) {
+			var techId = $(this).attr('value');
+			buildUpdateTechForm(techId);
 		});
 		
 		$('#content').append(table);
@@ -248,7 +264,48 @@ var buildTopicForm = function(techId){
 	});
 };
 
-
+var buildUpdateTechForm = function(techId){
+var form = $('<form id="updateTech">');
+	
+	var topicName = $('<input>');
+	topicName.attr('name', 'name'); // assign a name attribute
+	topicName.attr('type', 'text'); // assign a type attribute
+	topicName.attr('placeholder', 'Technology');
+	form.append(topicName);
+	
+	var information = $('<input>');
+	information.attr('name', 'description'); // assign a name attribute
+	information.attr('type', 'text'); // assign a type attribute
+	information.attr('placeholder', 'Information');
+	form.append(information);
+	
+	var comprehension = $('<input>');
+	comprehension.attr('name', 'score'); // assign a name attribute
+	comprehension.attr('type', 'text'); // assign a type attribute
+	comprehension.attr('placeholder', 'Comprehension');
+	form.append(comprehension);
+	
+	var $submit = $('<input>');
+	$submit.attr('name', 'submit');
+	$submit.attr('type', 'submit');
+	$submit.attr('value', 'Update Topic');
+	form.append($submit);
+	
+	$('#content').append(form);
+	
+	$submit.click(function(e) {
+		e.preventDefault();
+		$('#content').empty();
+		var techObject = {};
+		var formData = $(form).serializeArray();
+		$.each(formData, function(i, field) {
+			techObject[field.name] = field.value;
+			techObject[field.name] = field.value;
+			techObject[field.name] = field.value;
+		});
+		updateTechnology(techObject, techId);
+	});
+};
 
 
 
