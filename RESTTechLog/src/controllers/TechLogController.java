@@ -62,8 +62,12 @@ public class TechLogController {
 	
 	@RequestMapping(path = "topics/{id}", method = RequestMethod.GET)
 	public Set<Topic> indexTopic(@PathVariable int id){
-		System.out.println("*****************************************");
 		return techLogDao.showTopics(id);
+	}
+	
+	@RequestMapping(path = "topics/{id}", method = RequestMethod.PUT)
+	public Topic updateTopic(@RequestBody Topic t, @PathVariable int id){
+		return techLogDao.updateTopic(id, t);
 	}
 	
 	@RequestMapping(path = "topics/{id}", method = RequestMethod.DELETE)

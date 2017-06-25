@@ -15,5 +15,6 @@ public interface TechLogDAO {
 	public List<Topic> indexTopics();
 	public Set<Topic> showTopics(int id);
 	public Topic createTopic(int id, Topic topic);
+	public Topic updateTopic(int id, Topic topic);
 	public boolean destroyTopic(int id);
 }

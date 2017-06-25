@@ -61,12 +61,24 @@ public class TechLogDAOImpl implements TechLogDAO {
 		String qry = "Select t from Topic t";
 		return em.createQuery(qry).getResultList();
 	}
-	
+
 	@Override
 	public Set<Topic> showTopics(int id) {
-		String qry = "Select t from Technology t join fetch t.topics where t.id = :id";
-		Technology tech = em.createQuery(qry, Technology.class).setParameter("id", id).getSingleResult();
-		return tech.getTopics();
+		try {
+			String qry1 = "Select t from Technology t where t.id = :id";
+			Technology t = em.createQuery(qry1, Technology.class).setParameter("id", id).getSingleResult();
+			if (!t.getTopics().isEmpty()) {
+				String qry = "Select t from Technology t join fetch t.topics where t.id = :id";
+				System.out.println("****** Tech ID: " + id + "****");
+				Technology tech = em.createQuery(qry, Technology.class).setParameter("id", id).getSingleResult();
+				return tech.getTopics();
+			}
+			else {return null;}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -86,6 +98,18 @@ public class TechLogDAOImpl implements TechLogDAO {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public Topic updateTopic(int id, Topic topic) {
+		Topic managedT = em.find(Topic.class, id);
+		if (topic.getName() != null) {
+			managedT.setName(topic.getName());
+			managedT.setInformation(topic.getInformation());
+			managedT.setScore(id);
+			em.persist(managedT);
+		}
+		return managedT;
 	}
 
 }

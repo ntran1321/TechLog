@@ -34,6 +34,7 @@ var loadSingleTechnology = function(id){
 		console.log(data);
 		$('#content').empty();
 		loadTechnologyTopics(id);
+		addHomeButton();
 	})
 	.fail(function(xhr,status,error){
 		console.log("Load single tech is broken!");
@@ -59,13 +60,22 @@ var createTechnology = function(newTech){
 };
 
 var loadTechnologyTopics = function(techId){
+	buildTopicForm(techId);
 	$.ajax({
 		type : 'GET',
 		url : 'api/topics/' + techId,
 		dataType : 'JSON',
 	})
 	.done(function(data,status){
-		buildTopicsTable(data);
+		if (data!==null){
+			buildTopicsTable(data);
+			addHomeButton();
+		}
+		else{
+			$('#header').text("No Topics added!");
+			addHomeButton();
+		}
+		buildTopicForm(techId);
 	})
 	.fail(function(xhr,status,error){
 		console.log("Load topics is broken!");
@@ -134,7 +144,6 @@ var deleteTopic = function(topicId) {
 	      console.log(xhr.status);
 	    });
 }
-
 
 
 
