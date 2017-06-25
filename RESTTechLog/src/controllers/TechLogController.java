@@ -40,6 +40,11 @@ public class TechLogController {
 		return techLogDao.create(technology);
 	}
 	
+	@RequestMapping(path = "technologies/{id}", method = RequestMethod.PUT)
+	public Technology update(@RequestBody Technology t, @PathVariable int id){
+		return techLogDao.update(id, t);
+	}
+	
 	@RequestMapping(path = "technologies/{id}", method = RequestMethod.DELETE)
 	public boolean destroy(@PathVariable int id){
 		return techLogDao.destroy(id);

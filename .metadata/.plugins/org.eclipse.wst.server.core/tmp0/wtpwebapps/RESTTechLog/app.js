@@ -74,6 +74,7 @@ var loadTechnologyTopics = function(techId){
 };
 
 var updateTechnology = function(updatedTech, techId) {
+	console.log(updatedTech);
 	$.ajax({
 		type : 'PUT',
 		url : 'api/technologies/' + techId,

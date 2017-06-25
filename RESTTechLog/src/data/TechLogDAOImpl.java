@@ -71,12 +71,10 @@ public class TechLogDAOImpl implements TechLogDAO {
 
 	@Override
 	public Topic createTopic(int id, Topic topic) {
-		System.out.println(id);
 		Technology tech = em.find(Technology.class, id);
 		topic.setTechnology(tech);
 		System.out.println(topic.getTechnology().getDescription());
 		em.persist(topic);
-//		tech.getTopics().add(topic);
 		return topic;
 	}
 

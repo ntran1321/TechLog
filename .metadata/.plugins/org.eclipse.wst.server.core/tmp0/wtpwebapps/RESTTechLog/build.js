@@ -91,31 +91,6 @@ var buildTechTable = function(techs){
 	});
 };
 
-//var displaySingleTechnology = function(tech){
-//	var header = $('<h2>');
-//	header.text(tech.name);
-//	var h3 = $('<h3>');
-//	h3.text(tech.topics);
-//	$('#content').append(header);
-//	$('#content').append(h3);
-//	
-//	var homeBtn = $('<button>');
-//	homeBtn.text('Home');
-//	$('#content').append(homeBtn);
-//	
-//	var addTopicBtn = $('<button>');
-//	addTopicBtn.text('Add Topic');
-//	$('#content').append(addTopicBtn);
-//	
-//	homeBtn.click(function(e) {
-//		load();
-//	});
-//	
-//	addTopicBtn.click(function(e) {
-//		console.log(tech.id);
-//		buildTopicForm(tech.id);
-//	});
-//};
 
 var buildTopicsTable = function(topics){
 	$('#content').empty();
@@ -266,29 +241,44 @@ var buildTopicForm = function(techId){
 
 var buildUpdateTechForm = function(techId){
 var form = $('<form id="updateTech">');
-	
-	var topicName = $('<input>');
-	topicName.attr('name', 'name'); // assign a name attribute
-	topicName.attr('type', 'text'); // assign a type attribute
-	topicName.attr('placeholder', 'Technology');
-	form.append(topicName);
-	
-	var information = $('<input>');
-	information.attr('name', 'description'); // assign a name attribute
-	information.attr('type', 'text'); // assign a type attribute
-	information.attr('placeholder', 'Information');
-	form.append(information);
-	
-	var comprehension = $('<input>');
-	comprehension.attr('name', 'score'); // assign a name attribute
-	comprehension.attr('type', 'text'); // assign a type attribute
-	comprehension.attr('placeholder', 'Comprehension');
-	form.append(comprehension);
+
+var techName = $('<input>');
+techName.attr('name', 'name'); // assign a name attribute
+techName.attr('id', 'name'); // assign a name attribute
+techName.attr('type', 'text'); // assign a type attribute
+techName.attr('placeholder', 'Technology');
+form.append(techName);
+
+var description = $('<input>');
+description.attr('name', 'description'); // assign a name attribute
+description.attr('type', 'text'); // assign a type attribute
+description.attr('placeholder', 'Description');
+form.append(description);
+
+var $submit = $('<input>');
+$submit.attr('name', 'submit');
+$submit.attr('type', 'submit');
+$submit.attr('value', 'Update Technology');
+form.append($submit);
+
+$('#content').append(form);
+
+$submit.click(function(e) {
+	e.preventDefault();
+	$('#content').empty();
+	var techObject = {};
+	var formData = $(form).serializeArray();
+	$.each(formData, function(i, field) {
+		techObject[field.name] = field.value;
+		techObject[field.name] = field.value;
+	});
+	updateTechnology(techObject);
+});
 	
 	var $submit = $('<input>');
 	$submit.attr('name', 'submit');
 	$submit.attr('type', 'submit');
-	$submit.attr('value', 'Update Topic');
+	$submit.attr('value', 'Update Technology');
 	form.append($submit);
 	
 	$('#content').append(form);
@@ -296,13 +286,14 @@ var form = $('<form id="updateTech">');
 	$submit.click(function(e) {
 		e.preventDefault();
 		$('#content').empty();
+		console.log("update tech submit form");
 		var techObject = {};
 		var formData = $(form).serializeArray();
 		$.each(formData, function(i, field) {
 			techObject[field.name] = field.value;
 			techObject[field.name] = field.value;
-			techObject[field.name] = field.value;
 		});
+		console.log(techObject);
 		updateTechnology(techObject, techId);
 	});
 };
