@@ -4,6 +4,7 @@ $(document).ready(function(){
 });
 
 var load = function() {
+	$('#navHome').empty();
 	$.ajax({
 		type : 'GET',
 		url : 'api/technologies',

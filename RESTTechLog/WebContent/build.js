@@ -84,6 +84,12 @@ var buildTechTable = function(techs) {
 
 		updateBtn.click(function(e) {
 			var techId = $(this).attr('value');
+			$('#content').empty();
+			$('#navHome').empty();
+			$('#navHome').append('<a href="#goHome" id="goHome">Home</a>');
+			$('#goHome').click(function(e){
+				load();
+			});
 			buildUpdateTechForm(techId);
 		});
 
@@ -239,7 +245,7 @@ var buildUpdateTechForm = function(techId) {
 	techName.attr('placeholder', 'Technology');
 	form.append(techName);
 
-	var description = $('<input>');
+	var description = $('<textarea>');
 	description.attr('name', 'description'); // assign a name attribute
 	description.attr('type', 'text'); // assign a type attribute
 	description.attr('placeholder', 'Description');
@@ -275,6 +281,7 @@ var addHomeButton = function(){
 
 	homeBtn.click(function(e) {
 		load();
+		$('#navHome').empty();
 		$('#header').empty();
 		$('#content').empty();
 	});
