@@ -8,5 +8,5 @@ JavaScript, HTML/CSS, JSON, JQuery, AJAX, REST
 
 Features that I would like to add in the future are user logins and generalize the application so that any user can log new knowledge not specific to programming technologies.
 
-Deployment link: http://54.71.64.6:8080/RESTTechLog/
+Production link: http://54.71.64.6:8080/RESTTechLog/
 
