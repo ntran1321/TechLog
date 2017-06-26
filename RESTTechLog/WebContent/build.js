@@ -159,13 +159,13 @@ var buildTechForm = function() {
 	techName.attr('placeholder', 'Technology');
 	form.append(techName);
 
-	var description = $('<input>');
+	var description = $('<textarea id="description rows="10" cols="50">');
 	description.attr('name', 'description'); // assign a name attribute
 	description.attr('type', 'text'); // assign a type attribute
 	description.attr('placeholder', 'Description');
 	form.append(description);
 
-	var $submit = $('<input>');
+	var $submit = $('<br><input id="submitBtn">');
 	$submit.attr('name', 'submit');
 	$submit.attr('type', 'submit');
 	$submit.attr('value', 'Log Technology');
