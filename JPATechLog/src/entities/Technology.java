@@ -25,15 +25,15 @@ public class Technology {
 	@JsonIgnore
 	private Set<Topic> topics;
 	
-	private int totalScore;
+	private double totalScore;
 	
 	
 
-	public int getTotalScore() {
+	public double getTotalScore() {
 		return totalScore;
 	}
 
-	public void setTotalScore(int totalScore) {
+	public void setTotalScore(double totalScore) {
 		this.totalScore = totalScore;
 	}
 

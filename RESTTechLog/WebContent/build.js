@@ -39,7 +39,7 @@ var buildTechTable = function(techs) {
 		tr.append(td2);
 		table.append(tr);
 
-		td3.text(t.totalScore);
+		td3.text(t.totalScore + "%");
 		td3.attr('id', t.id);
 		tr.append(td3);
 		table.append(tr);

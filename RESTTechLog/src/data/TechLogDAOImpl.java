@@ -20,7 +20,21 @@ public class TechLogDAOImpl implements TechLogDAO {
 	@Override
 	public List<Technology> index() {
 		String qry = "Select t from Technology t";
-		return em.createQuery(qry, Technology.class).getResultList();
+		List<Technology> techs = em.createQuery(qry, Technology.class).getResultList();
+		for (Technology t : techs) {
+			Set<Topic> topics = t.getTopics();
+			double total = 0;
+			double score = 0;
+			if (!topics.isEmpty()) {
+				for (Topic topic : topics) {
+					score += topic.getScore();
+				}
+				total = score / (topics.size() * 4);
+
+				t.setTotalScore(Math.round(total *100));
+			}
+		}
+		return techs;
 	}
 
 	@Override
@@ -72,8 +86,9 @@ public class TechLogDAOImpl implements TechLogDAO {
 				System.out.println("****** Tech ID: " + id + "****");
 				Technology tech = em.createQuery(qry, Technology.class).setParameter("id", id).getSingleResult();
 				return tech.getTopics();
+			} else {
+				return null;
 			}
-			else {return null;}
 
 		} catch (Exception e) {
 			e.printStackTrace();
