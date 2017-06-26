@@ -11,6 +11,7 @@ var load = function() {
 	})
 	.done(function(data,status){
 		console.log(data);
+		$('#content').empty();
 		showTechnologies(data);
 		buildTechForm();
 	})

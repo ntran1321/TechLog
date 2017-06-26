@@ -140,7 +140,7 @@ var buildTopicsTable = function(topics) {
 
 		deleteTopicBtn.click(function(e) {
 			deleteTopic(t.id);
-			load();
+			$('#content').empty();
 		});
 
 	});
@@ -149,7 +149,7 @@ var buildTopicsTable = function(topics) {
 };
 
 var buildTechForm = function() {
-	var form = $('<form id="createTech">');
+	var form = $('<br><form id="createTech">');
 	form.attr('name', 'createTechForm');
 
 	var techName = $('<input>');
@@ -195,7 +195,7 @@ var buildTopicForm = function(techId) {
 	topicName.attr('placeholder', 'Topic');
 	form.append(topicName);
 
-	var information = $('<input>');
+	var information = $('<textarea>');
 	information.attr('name', 'information'); // assign a name attribute
 	information.attr('type', 'text'); // assign a type attribute
 	information.attr('placeholder', 'Information');

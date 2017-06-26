@@ -64,6 +64,7 @@ public class TechLogDAOImpl implements TechLogDAO {
 	public boolean destroy(int id) {
 		try {
 			em.remove(em.find(Technology.class, id));
+			System.out.println("in destroy dao");
 			return true;
 		} catch (Exception e) {
 			return false;
