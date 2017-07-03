@@ -1,26 +1,62 @@
 <h1>Hello TechLog</h1>
 
 <table>
+<tr>
 	<th>Technology</th>
 	<th>Description</th>
 	<th>Comprehension</th>
 	<th>View</th>
-	<th>Delete</th>
 	<th>Update</th>
-
+	<th>Delete</th>
+</tr>
 	<tr ng-repeat="tech in vm.techList">
 
-		<td>{{tech.name}}</td>
+		<td ng-click="vm.loadTechTopics(tech.id);vm.tech=tech">{{tech.name}}</td>
 		<td>{{tech.description}}</td>
 		<td>{{tech.totalScore}}</td>
 		<td><form>
-				<input type="submit" value="View" ng-click="vm.view" />
+				<input type="submit" value="View" ng-click="vm.loadTechTopics(tech.id)" />
 			</form>
 		</td>
 		<td><form>
-				<input type="submit" value="Delete" ng-click="vm.destroyItem(i)" />
+				<input type="submit" value="Update" ng-click="vm.tech=tech" />
+			</form>
+		</td>
+		<td><form>
+				<input type="submit" value="Delete" ng-click="vm.destroyTech(tech.id)" />
 			</form>
 		</td>
 	</tr>
-
 </table>
+
+<h3>{{vm.tech.name}}</h3>
+<table>
+<tr>
+<th>Topic</th>
+<th>Information</th>
+<th>Comprehension (0-4)</th>
+</tr>
+<tr ng-repeat="topic in vm.techTopics">
+	<td>{{topic.name}}</td>
+	<td>{{topic.information}}</td>
+	<td>{{topic.score}}</td>
+</tr>
+</table>
+
+<div id="createTech">
+	<form>
+		<label>Technology Name</label><input type="text" name="name" ng-model="newTech.name"/>
+		<label>Description</label><input type="text" name="name" ng-model="newTech.description"/>
+		<input type="submit" value="Create" ng-click="vm.createTech(newTech)"/>
+	</form>
+</div>
+
+<div id="updateTech">
+	<form>
+		<label>Technology Name</label><input type="text" name="name" ng-model="vm.updatedTech.name"/>
+		<label>Description</label><input type="text" name="name" ng-model="vm.updatedTech.description"/>
+		<input type="submit" value="Update" ng-click="vm.updateTech(vm.updatedTech,vm.tech.id)"/>
+	</form>
+</div>
+
+
