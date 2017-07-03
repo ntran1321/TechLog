@@ -35,6 +35,8 @@ var loadSingleTechnology = function(id){
 	.done(function(data,status){
 		console.log(data);
 		$('#content').empty();
+		$('#header').text(data.name);
+		
 		loadTechnologyTopics(id);
 		addHomeButton();
 	})

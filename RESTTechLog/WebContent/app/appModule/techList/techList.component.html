@@ -1,0 +1,26 @@
+<h1>Hello TechLog</h1>
+
+<table>
+	<th>Technology</th>
+	<th>Description</th>
+	<th>Comprehension</th>
+	<th>View</th>
+	<th>Delete</th>
+	<th>Update</th>
+
+	<tr ng-repeat="tech in vm.techList">
+
+		<td>{{tech.name}}</td>
+		<td>{{tech.description}}</td>
+		<td>{{tech.totalScore}}</td>
+		<td><form>
+				<input type="submit" value="View" ng-click="vm.view" />
+			</form>
+		</td>
+		<td><form>
+				<input type="submit" value="Delete" ng-click="vm.destroyItem(i)" />
+			</form>
+		</td>
+	</tr>
+
+</table>

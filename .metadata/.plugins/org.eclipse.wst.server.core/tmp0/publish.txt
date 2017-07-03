@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Sun Jun 25 21:10:46 MDT 2017
+#Mon Jul 03 12:56:14 MDT 2017
 org.eclipse.jst.j2ee.server\:JPATechLog=WEB-INF/lib/JPATechLog.jar
 org.eclipse.jst.j2ee.server\:/binary\:/Users/nancytran/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.2.RELEASE/562b3b775b6e8e7113b5d23b21946f939658bd19/spring-web-4.3.2.RELEASE.jar=WEB-INF/lib/spring-web-4.3.2.RELEASE.jar

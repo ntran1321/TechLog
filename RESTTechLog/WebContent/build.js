@@ -24,7 +24,7 @@ var buildTechTable = function(techs) {
 		var tr = $('<tr>');
 		var td1 = $('<td>');
 		var td2 = $('<td>');
-		var td3 = $('<td>');
+		var td3 = $('<td align=center>');
 		var td4 = $('<td>');
 		var td5 = $('<td>');
 		var td6 = $('<td>');
@@ -66,6 +66,13 @@ var buildTechTable = function(techs) {
 		td6.append(updateBtn);
 		tr.append(td6);
 		table.append(tr);
+		
+		$('td').click(function(e){
+			var techId = $(this).attr('id');
+			loadSingleTechnology(techId);
+
+			$('#content').empty();
+		});
 
 		viewBtn.click(function(e) {
 			console.log("view button clicked");
@@ -105,7 +112,7 @@ var buildTopicsTable = function(topics) {
 	var th2 = $('<th>');
 	th2.text("Information");
 	var th3 = $('<th>');
-	th3.text("Comprehension");
+	th3.text("Comprehension (0-4)");
 
 	var th4 = $('<th>');
 	th4.text("Delete");
@@ -119,7 +126,7 @@ var buildTopicsTable = function(topics) {
 		var tr = $('<tr>');
 		var td1 = $('<td>');
 		var td2 = $('<td>');
-		var td3 = $('<td>');
+		var td3 = $('<td align=center>');
 		var td4 = $('<td>');
 
 		td1.text(t.name);
@@ -286,3 +293,5 @@ var addHomeButton = function(){
 		$('#content').empty();
 	});
 };
+
+
