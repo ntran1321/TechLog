@@ -43,6 +43,36 @@ angular.module('appModule').factory('techService', function($http) {
 			url : 'api/technologies/' + techId
 		})
 	};
+	
+	service.createTopic = function(newTopic, techId) {
+		return $http({
+			method : 'POST',
+			url : 'api/topics/' + techId,
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			data : newTopic
+		})
+	};
+	
+	service.updateTopic = function(updatedTopic, topicId){
+		return $http({
+		      method : 'PUT',
+		      url : 'api/topic/' + topicId,
+		      headers : {
+		        'Content-Type' : 'application/json'
+		      },
+		      data : updatedTech
+		    })
+	};
+	
+	service.destroyTopic = function(topicId) {
+		return $http({
+			method : 'DELETE',
+			url : 'api/topics/' + topicId
+		})
+	};
 
 	return service;
 })
+

@@ -11,11 +11,11 @@
 </tr>
 	<tr ng-repeat="tech in vm.techList">
 
-		<td ng-click="vm.loadTechTopics(tech.id);vm.tech=tech">{{tech.name}}</td>
+		<td ng-click="vm.loadTechTopics(tech.id);vm.tech=tech;vm.currentTechId=tech.id">{{tech.name}}</td>
 		<td>{{tech.description}}</td>
 		<td>{{tech.totalScore}}</td>
 		<td><form>
-				<input type="submit" value="View" ng-click="vm.loadTechTopics(tech.id)" />
+				<input type="submit" value="View" ng-click="vm.loadTechTopics(tech.id);vm.tech=tech;console.log(vm.tech);" />
 			</form>
 		</td>
 		<td><form>
@@ -29,19 +29,6 @@
 	</tr>
 </table>
 
-<h3>{{vm.tech.name}}</h3>
-<table>
-<tr>
-<th>Topic</th>
-<th>Information</th>
-<th>Comprehension (0-4)</th>
-</tr>
-<tr ng-repeat="topic in vm.techTopics">
-	<td>{{topic.name}}</td>
-	<td>{{topic.information}}</td>
-	<td>{{topic.score}}</td>
-</tr>
-</table>
 
 <div id="createTech">
 	<form>
@@ -59,4 +46,44 @@
 	</form>
 </div>
 
+<h3>{{vm.tech.name}}</h3>
+<table>
+<tr>
+<th>Topic</th>
+<th>Information</th>
+<th>Comprehension (0-4)</th>
+</tr>
+<tr ng-repeat="topic in vm.techTopics">
+	<td>{{topic.name}}</td>
+	<td>{{topic.information}}</td>
+	<td>{{topic.score}}</td>
+	<td><form>
+		<input type="submit" value="Update" ng-click="vm.topic=topic" />
+		</form>
+		</td>
+	<td><form>
+		<input type="submit" value="Delete" ng-click="vm.destroyTopic(topic.id)" />
+		</form>
+	</td>
+</tr>
+</table>
+
+
+<div id="createTopic">
+	<form>
+		<label>Topic Name</label><input type="text" name="name" ng-model="newTopic.name"/>
+		<label>Description</label><input type="text" name="name" ng-model="newTopic.information"/>
+		<label>Comprehension</label><input type="text" name="name" ng-model="newTopic.score"/>
+		<input type="submit" value="Create" ng-click="vm.createTopic(newTopic, vm.tech.id);console.log(vm.tech)"/>
+	</form>
+</div>
+
+<div id="updateTopic">
+	<form>
+		<label>Topic Name</label><input type="text" name="name" ng-model="vm.updatedTopic.name"/>
+		<label>Description</label><input type="text" name="name" ng-model="vm.updatedTopic.information"/>
+		<label>Comprehension</label><input type="text" name="name" ng-model="vm.updatedTopic.score"/>
+		<input type="submit" value="Update" ng-click="vm.updateTopic(vm.updatedTopic,vm.topic.id)"/>
+	</form>
+</div>
 

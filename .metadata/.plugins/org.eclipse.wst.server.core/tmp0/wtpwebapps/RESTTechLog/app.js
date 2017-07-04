@@ -149,6 +149,19 @@ var deleteTopic = function(topicId) {
 	    });
 }
 
-
+var updateTopic = function(updatedTopic, topicId) {
+	$.ajax({
+		type : 'PUT',
+		url : 'api/topics/' + topicId,
+		dataType : 'JSON',
+		contentType : 'application/json',
+		data : JSON.stringify(updatedTopic)
+	}).done(function(data, status) {
+		load(data);
+	}).fail(function(xhr, status, error) {
+		console.log("Everything is broken!")
+		console.log(xhr.status);
+	});
+}
 
 
