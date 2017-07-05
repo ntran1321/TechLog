@@ -10,9 +10,8 @@
 		<th>Delete</th>
 	</tr>
 	<tr ng-repeat="tech in vm.techList">
-
-		<td
-			ng-click="vm.loadTechTopics(tech.id);vm.tech=tech;vm.currentTechId=tech.id">{{tech.name}}</td>
+		<td><a ng-click="vm.loadTechTopics(tech.id);vm.tech=tech;
+			vm.currentTechId=tech.id" href="#showTopics" du-smooth-scroll>{{tech.name}}</a></td>
 		<td>{{tech.description}}</td>
 		<td>{{tech.totalScore}}</td>
 		<td>
@@ -20,7 +19,9 @@
 					ng-click="vm.loadTechTopics(tech.id);vm.tech=tech;console.log(vm.tech);" />
 			</td>
 		<td>
-				<input type="submit" value="Update" ng-click="vm.tech=tech" />
+				<!-- <input type="submit" value="Update" ng-click="vm.tech=tech" /> -->
+				<a ng-click="vm.tech=tech;
+			vm.currentTechId=tech.id" href="#updateTech" du-smooth-scroll><input type="submit" value="Update" /></a>
 			</td>
 		<td>
 				<input type="submit" value="Delete"
@@ -42,26 +43,32 @@
 <div id="updateTech">
 	<form>
 		<label>Technology Name</label><input type="text" name="name"
-			ng-model="vm.updatedTech.name" /> <label>Description</label><input
-			type="text" name="name" ng-model="vm.updatedTech.description" /> <input
+			ng-model="vm.updatedTech.name" /> <label>Description</label>
+			<input
+			type="text" name="name" ng-model="vm.updatedTech.description" /> 
+			<input
 			type="submit" value="Update"
 			ng-click="vm.updateTech(vm.updatedTech,vm.tech.id)" />
 	</form>
 </div>
 
 <h3>{{vm.tech.name}}</h3>
-<table>
+<table id="showTopics">
 	<tr>
 		<th>Topic</th>
 		<th>Information</th>
 		<th>Comprehension (0-4)</th>
+		<th>Update</th>
+		<th>Delete</th>
 	</tr>
 	<tr ng-repeat="topic in vm.techTopics">
 		<td>{{topic.name}}</td>
 		<td>{{topic.information}}</td>
 		<td>{{topic.score}}</td>
 		<td>
-				<input type="submit" value="Update" ng-click="vm.topic=topic" />
+				<!-- <input type="submit" value="Update" ng-click="vm.topic=topic" /> -->
+				<a ng-click=""vm.topic=topic";vm.tech=tech;
+			vm.currentTechId=tech.id" href="#updateTopic" du-smooth-scroll><input type="submit" value="Update" />
 			</td>
 		<td>
 				<input type="submit" value="Delete"

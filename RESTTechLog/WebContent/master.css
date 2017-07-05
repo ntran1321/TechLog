@@ -115,3 +115,8 @@ table {
 	border-color: grey;
 	
 }
+
+a {
+	color: black;
+	text-decoration: none;
+}
